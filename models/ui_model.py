@@ -190,7 +190,7 @@ class UIModel(BaseModel):
     def add_objects(self, click_src, label_tgt, mask, style_id=0):
         y, x = click_src[0], click_src[1]
         mask = np.transpose(mask, (2, 0, 1))[np.newaxis,...]        
-        idx_src = torch.from_numpy(mask).cuda().nonzero()        
+        idx_src = torch.from_numpy(mask).cuda().nonzero()
         idx_src[:,2] += y
         idx_src[:,3] += x
 
@@ -312,7 +312,7 @@ class UIModel(BaseModel):
         if mask is not None:
             y, x = click_pt[0], click_pt[1]
             mask = np.transpose(mask, (2,0,1))[np.newaxis,...]        
-            idx = torch.from_numpy(mask).cuda().nonzero()        
+            idx = torch.from_numpy(mask).cuda().nonzero()
             idx[:,2] += y
             idx[:,3] += x    
         # changing the label of an existing object 

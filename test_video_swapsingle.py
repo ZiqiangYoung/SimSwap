@@ -74,7 +74,7 @@ if __name__ == '__main__':
         # img_att = img_b.view(-1, img_b.shape[0], img_b.shape[1], img_b.shape[2])
 
         # convert numpy to tensor
-        img_id = img_id.cuda()
+        img_id = img_id.to(torch.device("cpu"))
         # img_att = img_att.cuda()
 
         #create latent id

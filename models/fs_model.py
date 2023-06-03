@@ -48,7 +48,8 @@ class fsModel(BaseModel):
             torch.backends.cudnn.benchmark = True
         self.isTrain = opt.isTrain
 
-        device = torch.device("cuda:0")
+        device = torch.device("cpu")
+
 
         if opt.crop_size == 224:
             from .fs_networks import Generator_Adain_Upsample, Discriminator
@@ -64,7 +65,7 @@ class fsModel(BaseModel):
 
         # Id network
         netArc_checkpoint = opt.Arc_path
-        netArc_checkpoint = torch.load(netArc_checkpoint)
+        netArc_checkpoint = torch.load(netArc_checkpoint,map_location=torch.device('cpu'))
         self.netArc = netArc_checkpoint['model'].module
         self.netArc = self.netArc.to(device)
         self.netArc.eval()
